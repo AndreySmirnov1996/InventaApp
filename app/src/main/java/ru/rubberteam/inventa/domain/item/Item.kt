@@ -118,7 +118,7 @@ class Item {
     /**
      * Дата последнего обновления
      */
-    val itemLastUpdate: LocalDate? = null //    /**
+    val itemLastUpdate: String? = null //    /**
     //     * Проблема
     //     */
     //     Issue itemIssue;

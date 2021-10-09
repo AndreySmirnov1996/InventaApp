@@ -1,6 +1,7 @@
 package ru.rubberteam.inventa.domain.task
 
 import android.annotation.SuppressLint
+import com.google.gson.annotations.SerializedName
 import lombok.AllArgsConstructor
 import ru.rubberteam.inventa.domain.item.Item
 import java.time.LocalDate
@@ -15,16 +16,19 @@ class Task {
     /**
      * Уникальный служебный идентификатор, не может быть null, заменяет системный номер инвентаризации
      */
+    @SerializedName("taskId")
     val taskId = UUID.randomUUID()
 
     /**
      * Ссылка на пользователя, который является администратором процесса, не может быть null, не может быть пустым
      */
+    @SerializedName("businessAdmin")
     val businessAdmin = "admin"
 
     /**
      * Какие-либо контактные данные для возможного уточнения задачи
      */
+    @SerializedName("contactsAdmin")
     val contactsAdmin = "88005553535@sberbank.ru"
 
     /**
@@ -76,11 +80,6 @@ class Task {
     /**
      * Список ценностных объектов, участвующих в таске. Может быть пустым, правда в каких случаях?
      */
-    val items: Set<Item> = emptySet() // /**
-    // * Список проблем, которые возникли в данном бизнесс-процессе
-    // */
-    // @Builder.Default
-    // @JoinColumn(name = "TASK_ID")
-    // @ElementCollection(fetch = FetchType.EAGER)
-    // Set<Issue> issues = Collections.emptySet();
+    val items: Set<Item> = emptySet()
+
 }
