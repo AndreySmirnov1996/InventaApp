@@ -14,7 +14,8 @@ import java.util.*
 
 
 class TasksRetroClient {
-	private val BASE_URL = "http://188.242.160.111:8080"
+//	private val BASE_URL = "http://188.242.160.111:8080"
+	private val BASE_URL = "http://192.168.56.1:8080"
 	private var retrofit: Retrofit? = null
 
 	val tasksRetroClient: GetTasksRetro
