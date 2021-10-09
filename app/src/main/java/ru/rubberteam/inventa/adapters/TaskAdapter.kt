@@ -27,25 +27,32 @@ class TaskAdapter(
         val streetTitle: TextView = binding.street
         val addressTitle: TextView = binding.addressPart
 
-//        fun bind(position: Int, items: MutableList<Item>) {
         fun bind(position: Int, taskProcessing: TaskProcessing) {
             itemView.setOnClickListener {
-                taskProcessing.allItems[position]
+
+
+//                taskProcessing.allItems[position]
+//                Toast.makeText(
+//                    it.context,
+//                    "нажал на ${taskProcessing.allItems[position].itemLocation}",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//
+//                var data = taskProcessing.getCategories(taskProcessing.allItems[position].itemLocation)
+//
+//                var intent = Intent(it.context, ItemsActivity::class.java)
+//
+//                for (pair in data) {
+//                    intent.putExtra(pair.key, pair.value)
+//                }
+//
+//                it.context.startActivity(intent)
+
                 Toast.makeText(
                     it.context,
-                    "нажал на ${taskProcessing.allItems[position].itemLocation}",
+                    "нажал на ${taskProcessing.uniqueTownAndAddress}",
                     Toast.LENGTH_SHORT
                 ).show()
-
-                var data = taskProcessing.getCategories(taskProcessing.allItems[position].itemLocation)
-
-                var intent = Intent(it.context, ItemsActivity::class.java)
-
-                for (pair in data) {
-                    intent.putExtra(pair.key, pair.value)
-                }
-
-                it.context.startActivity(intent)
             }
         }
     }
@@ -57,12 +64,14 @@ class TaskAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val listItem = taskProcessing.splitAddresses[position]
+//        val listItem = taskProcessing.splitAddresses[position]
         holder.bind(position, taskProcessing)
-        holder.streetTitle.text = taskProcessing.splitAddresses[position].first
-        holder.addressTitle.text = taskProcessing.splitAddresses[position].second
+        holder.streetTitle.text = taskProcessing.uniqueTownAndAddress[position]
+//        holder.streetTitle.text = taskProcessing.splitAddresses[position].first
+//        holder.addressTitle.text = taskProcessing.splitAddresses[position].second
     }
 
-    override fun getItemCount() = taskProcessing.splitAddresses.size
+    //override fun getItemCount() = taskProcessing.splitAddresses.size
+    override fun getItemCount() = taskProcessing.uniqueTownAndAddress.size
 
 }
