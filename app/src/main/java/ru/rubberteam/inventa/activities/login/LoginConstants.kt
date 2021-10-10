@@ -6,4 +6,6 @@ object LoginConstants {
     const val ACTUAL_PIN_CODE_HASH_KEY = "actualPinCodeHash"
     const val APP_PREFERENCES = "settings"
     const val PIN_SYMBOL = " * "
+
+    const val ITEMS_KEY = "itemsKey"
 }

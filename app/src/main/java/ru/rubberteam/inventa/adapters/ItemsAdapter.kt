@@ -1,22 +1,17 @@
 package ru.rubberteam.inventa.adapters
 
 import android.content.Context
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ru.rubberteam.inventa.R
-import ru.rubberteam.inventa.activities.ErrorActivity
 import ru.rubberteam.inventa.databinding.ItemCardBinding
-import ru.rubberteam.inventa.databinding.TaskCardBinding
 import ru.rubberteam.inventa.domain.item.Item
 
 class ItemsAdapter(private val context: Context,
-				   private val data: MutableList<Pair<String, String>>
+				   private val data: ArrayList<Item>
 ) :
 	RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
@@ -24,7 +19,7 @@ class ItemsAdapter(private val context: Context,
 		var binding: ItemCardBinding = ItemCardBinding.bind(itemView)
 
 		val desc: TextView = binding.description
-		val count: TextView = binding.counter
+		val location: TextView = binding.location
 
 //		fun bind(position: Int, items: MutableList<Item>) {
 //			itemView.setOnClickListener {
@@ -46,10 +41,9 @@ class ItemsAdapter(private val context: Context,
 	}
 
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//		val listItem = taskProcessing.splitAddresses[position]
 //		holder.bind(position, taskProcessing.allItems as MutableList<Item>)
-		holder.desc.text = data[position].first
-		holder.count.text = data[position].second
+		holder.desc.text = data[position].itemDescription
+		holder.location.text = data[position].itemLocation
 	}
 
 	override fun getItemCount() = data.size

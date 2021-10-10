@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import ru.rubberteam.inventa.R
-import ru.rubberteam.inventa.activities.ErrorActivity
 import ru.rubberteam.inventa.activities.ItemsActivity
+import ru.rubberteam.inventa.activities.login.LoginConstants.ITEMS_KEY
 import ru.rubberteam.inventa.databinding.TaskCardBinding
-import ru.rubberteam.inventa.domain.item.Item
 
 
 class TaskAdapter(
@@ -25,34 +23,14 @@ class TaskAdapter(
         var binding: TaskCardBinding = TaskCardBinding.bind(itemView)
 
         val streetTitle: TextView = binding.street
-        val addressTitle: TextView = binding.addressPart
 
         fun bind(position: Int, taskProcessing: TaskProcessing) {
             itemView.setOnClickListener {
+                val address = taskProcessing.uniqueTownAndAddress[position]
+                val intent = Intent(it.context, ItemsActivity::class.java)
 
-
-//                taskProcessing.allItems[position]
-//                Toast.makeText(
-//                    it.context,
-//                    "нажал на ${taskProcessing.allItems[position].itemLocation}",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-//
-//                var data = taskProcessing.getCategories(taskProcessing.allItems[position].itemLocation)
-//
-//                var intent = Intent(it.context, ItemsActivity::class.java)
-//
-//                for (pair in data) {
-//                    intent.putExtra(pair.key, pair.value)
-//                }
-//
-//                it.context.startActivity(intent)
-
-                Toast.makeText(
-                    it.context,
-                    "нажал на ${taskProcessing.uniqueTownAndAddress}",
-                    Toast.LENGTH_SHORT
-                ).show()
+                intent.putExtra(ITEMS_KEY, taskProcessing.mapUniqueTownAddressAndItems[address])
+                it.context.startActivity(intent)
             }
         }
     }
@@ -64,14 +42,10 @@ class TaskAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-//        val listItem = taskProcessing.splitAddresses[position]
         holder.bind(position, taskProcessing)
         holder.streetTitle.text = taskProcessing.uniqueTownAndAddress[position]
-//        holder.streetTitle.text = taskProcessing.splitAddresses[position].first
-//        holder.addressTitle.text = taskProcessing.splitAddresses[position].second
     }
 
-    //override fun getItemCount() = taskProcessing.splitAddresses.size
     override fun getItemCount() = taskProcessing.uniqueTownAndAddress.size
 
 }

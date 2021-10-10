@@ -1,6 +1,7 @@
 package ru.rubberteam.inventa.domain.item
 
 import lombok.AllArgsConstructor
+import java.io.Serializable
 import java.time.LocalDate
 import java.util.*
 
@@ -8,7 +9,7 @@ import java.util.*
  * Сущность объекта, который когда-либо подлежал или будет подлежать инвентаризации
  */
 @AllArgsConstructor
-class Item {
+class Item : Serializable{
     /**
      * Соответствует item_ID, уникальный служебный идентификатор, не может быть null
      */
@@ -113,7 +114,7 @@ class Item {
     /**
      * Соответствует 'Adress' - адресу + уточнение локаци, например кабинет и рабочее место
      */
-    val itemLocation: String? = null
+    val itemLocation: String = ""
 
     /**
      * Дата последнего обновления

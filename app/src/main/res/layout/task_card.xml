@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/street"
@@ -24,18 +24,6 @@
             android:textStyle="bold"
             android:minLines="2"
             />
-
-        <TextView
-            android:id="@+id/addressPart"
-            android:layout_width="wrap_content"
-            android:layout_height="17dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="48dp"
-            android:textColor="@color/hint_text"
-            android:textSize="10sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 
