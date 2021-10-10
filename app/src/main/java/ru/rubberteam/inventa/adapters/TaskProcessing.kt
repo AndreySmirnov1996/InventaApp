@@ -39,7 +39,7 @@ class TaskProcessing(tasks: MutableList<Task>) : Serializable {
             }
         }
 
-        mapUniqueTownAddressAndItems.map { it.value = it.value.groupBy{it.itemLocation}}
+        //mapUniqueTownAddressAndItems.map { it.value = it.value.groupBy{it.itemLocation}} TODO
 
         itemsGroupByAddress = allItems.groupBy { it.itemLocation }
     }
